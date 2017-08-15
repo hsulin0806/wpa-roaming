@@ -1,0 +1,4 @@
+deploy:
+ stage: deploy
+ script:
+   - git push git@github.com:timschroedernet/wpa-roaming.git HEAD:master

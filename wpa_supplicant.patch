@@ -1,0 +1,37 @@
+diff -upr wpa-2.4.orig/wpa_supplicant/events.c wpa-2.4/wpa_supplicant/events.c
+--- wpa-2.4.orig/wpa_supplicant/events.c	2015-03-15 18:30:39.000000000 +0100
++++ wpa-2.4/wpa_supplicant/events.c	2017-08-06 16:37:23.687107620 +0200
+@@ -1241,7 +1241,7 @@ static int wpa_supplicant_need_to_roam(s
+ 		return 1;
+ 	}
+ 
+-	if (selected->est_throughput > current_bss->est_throughput + 5000) {
++	if (selected->est_throughput > current_bss->est_throughput + 10000) {
+ 		wpa_dbg(wpa_s, MSG_DEBUG,
+ 			"Allow reassociation - selected BSS has better estimated throughput");
+ 		return 1;
+@@ -1253,18 +1253,18 @@ static int wpa_supplicant_need_to_roam(s
+ 		return 0;
+ 	}
+ 
+-	min_diff = 2;
++	min_diff = 4;
+ 	if (current_bss->level < 0) {
+ 		if (current_bss->level < -85)
+-			min_diff = 1;
+-		else if (current_bss->level < -80)
+ 			min_diff = 2;
++		else if (current_bss->level < -80)
++			min_diff = 4;
+ 		else if (current_bss->level < -75)
+-			min_diff = 3;
++			min_diff = 6;
+ 		else if (current_bss->level < -70)
+-			min_diff = 4;
++			min_diff = 8;
+ 		else
+-			min_diff = 5;
++			min_diff = 10;
+ 	}
+ 	if (abs(current_bss->level - selected->level) < min_diff) {
+ 		wpa_dbg(wpa_s, MSG_DEBUG, "Skip roam - too small difference "
