@@ -1,6 +1,5 @@
-diff -upr wpa-2.4.orig/wpa_supplicant/events.c wpa-2.4/wpa_supplicant/events.c
---- wpa-2.4.orig/wpa_supplicant/events.c	2015-03-15 18:30:39.000000000 +0100
-+++ wpa-2.4/wpa_supplicant/events.c	2017-08-06 16:37:23.687107620 +0200
+--- a/wpa_supplicant/events.c	2015-03-15 18:30:39.000000000 +0100
++++ b/wpa_supplicant/events.c	2017-08-06 16:37:23.687107620 +0200
 @@ -1241,7 +1241,7 @@ static int wpa_supplicant_need_to_roam(s
  		return 1;
  	}
